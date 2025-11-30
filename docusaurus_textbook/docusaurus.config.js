@@ -29,6 +29,8 @@ const config = {
     locales: ['en', 'ur'], // Added Urdu locale
   },
 
+  
+
   presets: [
     [
       'classic',
@@ -73,6 +75,20 @@ const config = {
             href: 'https://github.com/subhankaladi',
             label: 'GitHub',
             position: 'right',
+          },
+          {
+            type: 'localeDropdown',
+            position: 'right',
+            i18n: {
+  defaultLocale: 'en',
+  locales: ['en', 'ur'],
+  localeConfigs: {
+    ur: {
+      label: 'اردو',
+      direction: 'rtl',
+    },
+  },
+},
           },
         ],
       },
