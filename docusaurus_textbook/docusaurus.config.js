@@ -1,50 +1,40 @@
+// Revamped Docusaurus config with modern premium GREEN UI theme setup
 import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Physical AI & Humanoid Robotics Textbook',
-  tagline: 'Learning Physical AI and Robotics',
+  tagline: 'Reimagining Robotics Education with Next-Gen UI/UX',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://physicalhumanoidaitextbook.vercel.app',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'subhankaladi', // Usually your GitHub org/user name.
-  projectName: 'physical-ai-humanoid-robotics-textbook', // Usually your repo name.
+  organizationName: 'subhankaladi',
+  projectName: 'physical-ai-humanoid-robotics-textbook',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ur'], // Added Urdu locale
+    locales: ['en', 'ur'],
   },
-
-  
 
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo. Suffix with a / for GitHub pages deployment.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo. Suffix with a / for GitHub pages deployment.
-          editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl:
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -53,91 +43,107 @@ const config = {
     ],
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/ph-ai-logo.png',
-      navbar: {
-        title: 'Physical AI & Humanoid Robotics Textbook',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/ph-ai-logo.png',
+  themeConfig: ({
+    image: 'img/ph-ai-logo.png',
+
+    /* ================================
+       PREMIUM GREEN NAVBAR
+    ================================= */
+    navbar: {
+      title: 'Physical AI & Humanoid Robotics Textbook',
+      logo: {
+        alt: 'PH-AI Logo',
+        src: 'img/ph-ai-logo.png',
+        srcDark: 'img/ph-ai-logo-dark.png',
+      },
+      style: 'dark',
+
+      // Modern deep-green background
+      hideOnScroll: true,
+      className: 'navbar--green-theme',
+
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: '📘 Textbook',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Textbook',
-          },
-          {
-            href: 'https://github.com/subhankaladi',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-            i18n: {
-  defaultLocale: 'en',
-  locales: ['en', 'ur'],
-  localeConfigs: {
-    ur: {
-      label: 'اردو',
-      direction: 'rtl',
+        {
+          href: 'https://github.com/FareedNathani',
+          label: '⭐ GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+      ],
     },
-  },
-},
-          },
-        ],
+
+    /* ================================
+       PREMIUM GREEN FOOTER
+       (Glassmorphism + Deep Green)
+    ================================= */
+    footer: {
+      style: 'dark',
+      className: 'footer--green-glass',
+
+      links: [
+        {
+          title: 'Documentation',
+          items: [
+            { label: 'Introduction', to: '/docs/introduction/intro' },
+          ],
+        },
+        {
+          title: 'Social Profiles',
+          items: [
+            { label: 'GitHub', href: 'https://github.com/FareedNathani' },
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fareed-nathani-30180a324/' },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            { label: 'GitHub Repo', href: 'https://github.com/FareedNathani' },
+          ],
+        },
+      ],
+      copyright: `© ${new Date().getFullYear()} 
+      Physical AI & Humanoid Robotics Textbook — Designed by Fareed Nathani.`,
+    },
+
+    /* ================================
+       GREEN-FRIENDLY CODE THEMES
+    ================================= */
+    prism: {
+      theme: prismThemes.vsDark,     // works well with green UI
+      darkTheme: prismThemes.oceanicNext, // green-blue premium theme
+      magicComments: [
+        {
+          className: 'theme-code-block-highlight',
+          line: 'highlight-next-line',
+        },
+      ],
+    },
+
+    /* ================================
+       UI ENHANCEMENTS
+    ================================= */
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introduction',
-                to: '/docs/introduction/intro',
-              },
-            ],
-          },
-          {
-            title: 'Social Profiles',
-            items: [
-              {
-                label: 'Instagram',
-                href: 'https://instagram.com/subhan_kaladi',
-              },
-              {
-                label: 'LinkenIN',
-                href: 'https://www.linkedin.com/in/subhankaladi/',
-              },
-              {
-                label: '(X)Twitter',
-                href: 'https://x.com/subhankaladi15',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/subhankaladi',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright � ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook, Built with ❤️ by Subhan Kaladi.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
-    }),
+    },
+  }),
 };
 
 export default config;

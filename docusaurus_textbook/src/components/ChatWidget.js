@@ -1,97 +1,108 @@
-import { useState } from 'react';
-import axios from 'axios';
-import './chat.css';
+import { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import "./chat.css"; // Green COSMIC theme
 
 export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+const [open, setOpen] = useState(false);
+const [messages, setMessages] = useState([]);
+const [input, setInput] = useState("");
+const [loading, setLoading] = useState(false);
 
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-    
-    const userMessage = { sender: "user", text: input };
-    const currentInput = input;
-    
-    setMessages(prev => [...prev, userMessage]);
-    setInput("");
-    setLoading(true);
-    
-    try {
-      console.log("Sending message:", currentInput);
-      
-      const res = await axios.post("https://backend-deploy-yt.onrender.com/chat", {
-        message: currentInput
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      console.log("Response received:", res);
-      console.log("Response data:", res.data);
-      
-      const botReply = res.data.reply || res.data.response || res.data.message || "No response from server";
-      const botMessage = { sender: "bot", text: botReply };
-      
-      setMessages(prev => [...prev, botMessage]);
-    } catch (err) {
-      console.error("Chat error details:", err);
-      console.error("Error response:", err.response);
-      
-      const errorMsg = err.response?.data?.error || err.message || "Unable to reach server";
-      setMessages(prev => [...prev, { 
-        sender: "bot", 
-        text: `Error: ${errorMsg}` 
-      }]);
-    } finally {
-      setLoading(false);
-    }
-  };
+const chatEndRef = useRef(null);
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !loading) {
-      sendMessage();
-    }
-  };
+useEffect(() => {
+chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+}, [messages, loading]);
 
-  return (
-    <div className="chat-container">
-      <button className="chat-button" onClick={() => setOpen(!open)}>
-        💬 Chat
-      </button>
-      {open && (
-        <div className="chat-box">
-          <div className="chat-header">
-            <strong>AI Assistant</strong>
-          </div>
-          <div className="chat-body">
-            {messages.map((m, i) => (
-              <div key={i} className={`bubble ${m.sender}`}>
-                {m.text}
-              </div>
-            ))}
-            {loading && (
-              <div className="bubble bot">
-                <em>Typing...</em>
-              </div>
-            )}
-          </div>
-          <div className="chat-input">
-            <input 
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type message..."
-              disabled={loading}
-            />
-            <button onClick={sendMessage} disabled={loading}>
-              {loading ? "..." : "Send"}
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+const sendMessage = async () => {
+if (!input.trim() || loading) return;
+
+
+const userText = input;
+setInput("");
+
+const userMessage = { sender: "user", text: userText };
+setMessages(prev => [...prev, userMessage]);
+setLoading(true);
+
+try {
+  const res = await axios.post(
+    "https://backend-deploy-yt.onrender.com/chat",
+    { message: userText },
+    { headers: { "Content-Type": "application/json" } }
   );
+
+  const botReply =
+    res.data.reply || res.data.response || res.data.message || "No response from server";
+
+  const botMessage = { sender: "bot", text: botReply };
+  setMessages(prev => [...prev, botMessage]);
+} catch (err) {
+  const errorMsg =
+    err.response?.data?.error || err.message || "Unable to reach server";
+
+  setMessages(prev => [...prev, { sender: "bot", text: `⚠️ Error: ${errorMsg}` }]);
+} finally {
+  setLoading(false);
+}
+
+
+};
+
+const handleKeyDown = e => {
+if (e.key === "Enter" && !loading) sendMessage();
+};
+
+return ( <div className="chat-container">
+<button
+className="chat-button"
+onClick={() => setOpen(prev => !prev)}
+title="Open Chat"
+>
+💬 Chat </button>
+
+```
+  {open && (
+    <div className="chat-box">
+      <div className="chat-header">
+        <strong>AI Assistant</strong>
+      </div>
+
+      <div className="chat-body">
+        {messages.map((m, idx) => (
+          <div key={idx} className={`bubble ${m.sender}`}>
+            {m.text}
+          </div>
+        ))}
+
+        {loading && (
+          <div className="bubble bot">
+            <em>Typing...</em>
+          </div>
+        )}
+
+        <div ref={chatEndRef} />
+      </div>
+
+      <div className="chat-input">
+        <input
+          type="text"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Type a message..."
+          disabled={loading}
+        />
+        <button
+          onClick={sendMessage}
+          disabled={loading || !input.trim()}
+        >
+          {loading ? "..." : "Send"}
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
+);
 }
