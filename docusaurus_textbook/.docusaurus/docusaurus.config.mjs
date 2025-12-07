@@ -5,19 +5,17 @@
  */
 export default {
   "title": "Physical AI & Humanoid Robotics Textbook",
-  "tagline": "Reimagining Robotics Education with Next‑Gen UI/UX",
+  "tagline": "AI-native engineering for humanoids, robotics, ROS2 and VLA systems",
   "favicon": "img/favicon.ico",
   "url": "https://physicalhumanoidaitextbook.vercel.app",
   "baseUrl": "/",
-  "organizationName": "subhankaladi",
-  "projectName": "physical-ai-humanoid-robotics-textbook",
-  "deploymentBranch": "gh-pages",
+  "organizationName": "mubashir2117",
+  "projectName": "physical-ai-book",
   "onBrokenLinks": "throw",
   "i18n": {
     "defaultLocale": "en",
     "locales": [
-      "en",
-      "ur"
+      "en"
     ],
     "path": "i18n",
     "localeConfigs": {}
@@ -27,183 +25,116 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "./sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "sidebarPath": "D:\\hackathon-physical-ai-humanoid-textbook\\docusaurus_textbook\\sidebars.js",
+          "editUrl": "https://github.com/mubashir2117/physical-ai-book/tree/main/"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/mubashir2117/physical-ai-book/tree/main/"
         },
         "theme": {
-          "customCss": "./src/css/custom.css"
+          "customCss": "D:\\hackathon-physical-ai-humanoid-textbook\\docusaurus_textbook\\src\\css\\custom.css"
         }
       }
     ]
   ],
   "themeConfig": {
-    "image": "img/ph-ai-logo.png",
+    "colorMode": {
+      "defaultMode": "light",
+      "disableSwitch": false,
+      "respectPrefersColorScheme": true
+    },
     "navbar": {
-      "title": "Physical AI & Humanoid Robotics Textbook",
+      "title": "Physical AI Textbook",
       "logo": {
-        "alt": "PH-AI Logo",
-        "src": "img/ph-ai-logo.png",
-        "srcDark": "img/ph-ai-logo-dark.png"
+        "alt": "Physical AI Logo",
+        "src": "img/logo.svg"
       },
-      "style": "dark",
-      "hideOnScroll": true,
       "items": [
         {
-          "type": "docSidebar",
-          "sidebarId": "tutorialSidebar",
-          "position": "left",
-          "label": "📘 Textbook"
+          "to": "/docs/intro",
+          "label": "Docs",
+          "position": "left"
         },
         {
-          "href": "https://github.com/FareedNathani",
-          "label": "⭐ GitHub",
+          "to": "/blog",
+          "label": "Blog",
+          "position": "left"
+        },
+        {
+          "href": "https://github.com/mubashir2117",
+          "label": "GitHub",
           "position": "right"
-        },
-        {
-          "type": "localeDropdown",
-          "position": "right",
-          "dropdownItemsBefore": [],
-          "dropdownItemsAfter": []
         }
-      ]
+      ],
+      "hideOnScroll": false
     },
     "footer": {
       "style": "dark",
       "links": [
         {
-          "title": "Documentation",
+          "title": "Docs",
           "items": [
             {
               "label": "Introduction",
-              "to": "/docs/introduction/intro"
+              "to": "/docs/intro"
             }
           ]
         },
         {
-          "title": "Social Profiles",
+          "title": "Community",
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/FareedNathani"
+              "href": "https://github.com/mubashir2117"
             },
             {
               "label": "LinkedIn",
-              "href": "https://www.linkedin.com/in/fareed-nathani-30180a324/"
-            }
-          ]
-        },
-        {
-          "title": "More",
-          "items": [
+              "href": "https://www.linkedin.com/in/mubashir-javaid-175a6728b"
+            },
             {
-              "label": "GitHub Repo",
-              "href": "https://github.com/FareedNathani"
+              "label": "Instagram",
+              "href": "https://www.instagram.com/mj_mubashir21/"
             }
           ]
         }
       ],
-      "copyright": "© 2025 Physical AI & Humanoid Robotics Textbook — Designed by Fareed Nathani."
+      "copyright": "© 2025 Physical AI Engineering — Built by Mubashir Javaid."
     },
     "prism": {
       "theme": {
         "plain": {
-          "color": "#9CDCFE",
-          "backgroundColor": "#1E1E1E"
+          "color": "#393A34",
+          "backgroundColor": "#f6f8fa"
         },
         "styles": [
           {
             "types": [
-              "prolog"
+              "comment",
+              "prolog",
+              "doctype",
+              "cdata"
             ],
             "style": {
-              "color": "rgb(0, 0, 128)"
+              "color": "#999988",
+              "fontStyle": "italic"
             }
           },
           {
             "types": [
-              "comment"
+              "namespace"
             ],
             "style": {
-              "color": "rgb(106, 153, 85)"
+              "opacity": 0.7
             }
           },
           {
             "types": [
-              "builtin",
-              "changed",
-              "keyword",
-              "interpolation-punctuation"
-            ],
-            "style": {
-              "color": "rgb(86, 156, 214)"
-            }
-          },
-          {
-            "types": [
-              "number",
-              "inserted"
-            ],
-            "style": {
-              "color": "rgb(181, 206, 168)"
-            }
-          },
-          {
-            "types": [
-              "constant"
-            ],
-            "style": {
-              "color": "rgb(100, 102, 149)"
-            }
-          },
-          {
-            "types": [
-              "attr-name",
-              "variable"
-            ],
-            "style": {
-              "color": "rgb(156, 220, 254)"
-            }
-          },
-          {
-            "types": [
-              "deleted",
               "string",
-              "attr-value",
-              "template-punctuation"
+              "attr-value"
             ],
             "style": {
-              "color": "rgb(206, 145, 120)"
-            }
-          },
-          {
-            "types": [
-              "selector"
-            ],
-            "style": {
-              "color": "rgb(215, 186, 125)"
-            }
-          },
-          {
-            "types": [
-              "tag"
-            ],
-            "style": {
-              "color": "rgb(78, 201, 176)"
-            }
-          },
-          {
-            "types": [
-              "tag"
-            ],
-            "languages": [
-              "markup"
-            ],
-            "style": {
-              "color": "rgb(86, 156, 214)"
+              "color": "#e3116c"
             }
           },
           {
@@ -212,42 +143,63 @@ export default {
               "operator"
             ],
             "style": {
-              "color": "rgb(212, 212, 212)"
+              "color": "#393A34"
             }
           },
           {
             "types": [
-              "punctuation"
-            ],
-            "languages": [
-              "markup"
+              "entity",
+              "url",
+              "symbol",
+              "number",
+              "boolean",
+              "variable",
+              "constant",
+              "property",
+              "regex",
+              "inserted"
             ],
             "style": {
-              "color": "#808080"
+              "color": "#36acaa"
             }
           },
           {
             "types": [
-              "function"
+              "atrule",
+              "keyword",
+              "attr-name",
+              "selector"
             ],
             "style": {
-              "color": "rgb(220, 220, 170)"
+              "color": "#00a4db"
             }
           },
           {
             "types": [
-              "class-name"
+              "function",
+              "deleted",
+              "tag"
             ],
             "style": {
-              "color": "rgb(78, 201, 176)"
+              "color": "#d73a49"
             }
           },
           {
             "types": [
-              "char"
+              "function-variable"
             ],
             "style": {
-              "color": "rgb(209, 105, 105)"
+              "color": "#6f42c1"
+            }
+          },
+          {
+            "types": [
+              "tag",
+              "selector",
+              "keyword"
+            ],
+            "style": {
+              "color": "#00009f"
             }
           }
         ]
@@ -341,25 +293,24 @@ export default {
           }
         ]
       },
+      "additionalLanguages": [],
       "magicComments": [
         {
-          "className": "theme-code-block-highlight",
-          "line": "highlight-next-line"
+          "className": "theme-code-block-highlighted-line",
+          "line": "highlight-next-line",
+          "block": {
+            "start": "highlight-start",
+            "end": "highlight-end"
+          }
         }
-      ],
-      "additionalLanguages": []
-    },
-    "colorMode": {
-      "defaultMode": "dark",
-      "disableSwitch": false,
-      "respectPrefersColorScheme": true
+      ]
     },
     "docs": {
+      "versionPersistence": "localStorage",
       "sidebar": {
-        "hideable": true,
-        "autoCollapseCategories": true
-      },
-      "versionPersistence": "localStorage"
+        "hideable": false,
+        "autoCollapseCategories": false
+      }
     },
     "blog": {
       "sidebar": {

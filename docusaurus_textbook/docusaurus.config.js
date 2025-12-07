@@ -1,149 +1,104 @@
-// Revamped Docusaurus config with modern premium GREEN UI theme setup
-import {themes as prismThemes} from 'prism-react-renderer';
+// @ts-check
+import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Physical AI & Humanoid Robotics Textbook',
-  tagline: 'Reimagining Robotics Education with Next-Gen UI/UX',
-  favicon: 'img/favicon.ico',
+  title: "Physical AI & Humanoid Robotics Textbook",
+  tagline: "AI-native engineering for humanoids, robotics, ROS2 and VLA systems",
+  favicon: "img/favicon.ico",
 
-  url: 'https://physicalhumanoidaitextbook.vercel.app',
-  baseUrl: '/',
+  url: "https://physicalhumanoidaitextbook.vercel.app",
+  baseUrl: "/",
 
-  organizationName: 'subhankaladi',
-  projectName: 'physical-ai-humanoid-robotics-textbook',
-  deploymentBranch: 'gh-pages',
+  organizationName: "mubashir2117",
+  projectName: "physical-ai-book",
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'ur'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
-      ({
+      "classic",
+      {
         docs: {
-          sidebarPath: './sidebars.js',
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl: "https://github.com/mubashir2117/physical-ai-book/tree/main/",
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: "https://github.com/mubashir2117/physical-ai-book/tree/main/",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 
-  themeConfig: ({
-    image: 'img/ph-ai-logo.png',
-
-    /* ================================
-       PREMIUM GREEN NAVBAR
-    ================================= */
-    navbar: {
-      title: 'Physical AI & Humanoid Robotics Textbook',
-      logo: {
-        alt: 'PH-AI Logo',
-        src: 'img/ph-ai-logo.png',
-        srcDark: 'img/ph-ai-logo-dark.png',
-      },
-      style: 'dark',
-
-      // Modern deep-green background
-      hideOnScroll: true,
-      className: 'navbar--green-theme',
-
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: '📘 Textbook',
-        },
-        {
-          href: 'https://github.com/FareedNathani',
-          label: '⭐ GitHub',
-          position: 'right',
-        },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
-      ],
-    },
-
-    /* ================================
-       PREMIUM GREEN FOOTER
-       (Glassmorphism + Deep Green)
-    ================================= */
-    footer: {
-      style: 'dark',
-      className: 'footer--green-glass',
-
-      links: [
-        {
-          title: 'Documentation',
-          items: [
-            { label: 'Introduction', to: '/docs/introduction/intro' },
-          ],
-        },
-        {
-          title: 'Social Profiles',
-          items: [
-            { label: 'GitHub', href: 'https://github.com/FareedNathani' },
-            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fareed-nathani-30180a324/' },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            { label: 'GitHub Repo', href: 'https://github.com/FareedNathani' },
-          ],
-        },
-      ],
-      copyright: `© ${new Date().getFullYear()} 
-      Physical AI & Humanoid Robotics Textbook — Designed by Fareed Nathani.`,
-    },
-
-    /* ================================
-       GREEN-FRIENDLY CODE THEMES
-    ================================= */
-    prism: {
-      theme: prismThemes.vsDark,     // works well with green UI
-      darkTheme: prismThemes.oceanicNext, // green-blue premium theme
-      magicComments: [
-        {
-          className: 'theme-code-block-highlight',
-          line: 'highlight-next-line',
-        },
-      ],
-    },
-
-    /* ================================
-       UI ENHANCEMENTS
-    ================================= */
+  themeConfig: {
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: "light",
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
 
-    docs: {
-      sidebar: {
-        hideable: true,
-        autoCollapseCategories: true,
+    navbar: {
+      title: "Physical AI Textbook",
+      logo: {
+        alt: "Physical AI Logo",
+        src: "img/logo.svg",
       },
+      items: [
+        { to: "/docs/intro", label: "Docs", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
+        {
+          href: "https://github.com/mubashir2117",
+          label: "GitHub",
+          position: "right",
+        },
+      ],
     },
-  }),
+
+    footer: {
+      style: "dark",
+      links: [
+        {
+          title: "Docs",
+          items: [
+            { label: "Introduction", to: "/docs/intro" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { 
+              label: "GitHub", 
+              href: "https://github.com/mubashir2117" 
+            },
+            { 
+              label: "LinkedIn", 
+              href: "https://www.linkedin.com/in/mubashir-javaid-175a6728b" 
+            },
+            { 
+              label: "Instagram", 
+              href: "https://www.instagram.com/mj_mubashir21/" 
+            },
+          ],
+        },
+      ],
+      copyright: `© ${new Date().getFullYear()} Physical AI Engineering — Built by Mubashir Javaid.`,
+    },
+
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  },
 };
 
 export default config;
